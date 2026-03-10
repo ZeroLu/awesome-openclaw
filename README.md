@@ -12,60 +12,7 @@
 
 ### OpenClaw vs ChatGPT vs Claude Code
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                                                                             │
-│   ChatGPT                              OpenClaw                              │
-│   ─────────                            ─────────                            │
-│   ┌──────────┐                        ┌──────────┐                         │
-│   │  网页聊天  │                        │ 你的电脑  │                         │
-│   └────┬─────┘                        └────┬─────┘                         │
-│        │                                   │                               │
-│        ▼                                   ▼                               │
-│   ┌──────────┐    ┌────────────────────────────────────────┐              │
-│   │ OpenAI   │    │  ┌─────────┐  ┌─────────┐  ┌─────────┐ │              │
-│   │ 服务器    │    │  │ WhatsApp│  │ Telegram│  │ iMessage│ │              │
-│   └──────────┘    │  └────┬────┘  └────┬────┘  └────┬────┘ │              │
-│                   │       │            │            │       │              │
-│   ❌ 无法访问      │       └────────────┼────────────┘       │              │
-│      你的文件      │                    ▼                    │              │
-│      你的应用      │              ┌───────────┐              │              │
-│      你的设备      │              │  Gateway  │              │              │
-│                   │              │  (端口18789)│              │              │
-│   ❌ 数据存在      │              └─────┬─────┘              │              │
-│      别人服务器    │                    │                    │              │
-│                   │                    ▼                    │              │
-│   ❌ 无法自定义    │              ┌───────────┐              │              │
-│      行为和技能    │              │ AI Agent  │              │              │
-│                   │              │  (本地运行) │              │              │
-│                   │              └─────┬─────┘              │              │
-│                   │        ┌───────────┼───────────┐        │              │
-│                   │        ▼           ▼           ▼        │              │
-│                   │   ┌────────┐ ┌────────┐ ┌────────┐      │              │
-│                   │   │ 你的文件│ │ 你的应用│ │ 你的设备│      │              │
-│                   │   └────────┘ └────────┘ └────────┘      │              │
-│                   │                                        │              │
-│                   │  ✅ 数据在你自己手里                      │              │
-│                   │  ✅ 可访问你的所有工具                     │              │
-│                   │  ✅ 自定义技能和行为                       │              │
-│                   │  ✅ 24小时待命                           │              │
-│                   └────────────────────────────────────────┘              │
-│                                                                             │
-└─────────────────────────────────────────────────────────────────────────────┘
-
-   Claude Code
-   ───────────
-   ┌──────────────┐
-   │   终端命令行   │
-   └──────┬───────┘
-          │
-          ▼
-   ┌──────────────┐
-   │  写代码专家   │  ✅ 专注编程
-   │              │  ✅ 本地运行
-   └──────────────┘  ❌ 只在终端使用
-                     ❌ 不连接聊天应用
-```
+![OpenClaw vs ChatGPT vs Claude Code](openclaw-vs-chatgpt-vs-claude-code.png)
 
 | 特性 | ChatGPT | Claude Code | OpenClaw |
 |------|---------|-------------|----------|
@@ -153,23 +100,76 @@ openclaw gateway --port 18789  # 启动
 
 ## 2. Awesome Skills
 
-OpenClaw 拥有 5400+ 社区技能，按类别整理。
+OpenClaw 拥有 5400+ 社区技能，以下是一些热门技能。
 
 > 完整技能列表：https://github.com/VoltAgent/awesome-openclaw-skills
 
-### 热门技能类别
+### 🤖 AI & 编程
 
-| 类别 | 技能数 | 热门技能 |
-|------|--------|----------|
-| **🤖 AI & 编程** | 1222 | coding-agent, github, gemini |
-| **🌐 浏览器自动化** | 335 | browser-vision, web-scraper |
-| **🔍 搜索研究** | 350 | deep-research, web-search |
-| **⚡ DevOps** | 409 | n8n-automation, security-audit |
-| **🎨 图像视频生成** | 169 | image-gen, video-gen |
-| **🍎 Apple 应用** | 44 | apple-notes, apple-reminders |
-| **📝 效率工具** | 206 | notion, obsidian, trello |
-| **💬 消息通道** | 149 | discord, slack, imsg |
-| **🏠 智能家居** | 43 | sonoscli, openhue |
+| 技能 | 描述 |
+|------|------|
+| [coding-agent](https://github.com/openclaw/skills/tree/main/skills/coding-agent) | 将编程任务委托给 Codex、Claude Code 或 Pi 智能体 |
+| [github](https://github.com/openclaw/skills/tree/main/skills/github) | GitHub 操作：PRs、Issues、CI、代码搜索 |
+| [gemini](https://github.com/openclaw/skills/tree/main/skills/gemini) | 使用 Gemini CLI 进行编程辅助 |
+| [claude-code](https://github.com/openclaw/skills/tree/main/skills/claude-code-skill) | MCP 集成，让 Claude Code 更强大 |
+
+### 🌐 浏览器自动化
+
+| 技能 | 描述 |
+|------|------|
+| [browser-vision](https://github.com/openclaw/skills/tree/main/skills/browser-vision) | 无头 Chrome 截图、网页自动化、视觉调试 |
+| [web-scraper](https://github.com/openclaw/skills/tree/main/skills/web-scraper) | 反爬网页访问，微信公众号/Twitter/Reddit 等 |
+| [agent-browser](https://github.com/openclaw/skills/tree/main/skills/agent-browser) | 为 AI 智能体优化的无头浏览器自动化 CLI |
+
+### 🔍 搜索研究
+
+| 技能 | 描述 |
+|------|------|
+| [deep-research](https://github.com/openclaw/skills/tree/main/skills/deep-research) | 多引擎搜索 + 网页提取 + 结构化分析报告 |
+| [web-search](https://github.com/openclaw/skills/tree/main/skills/web-search) | Brave 搜索 + DuckDuckGo 多引擎搜索 |
+| [academic-research](https://github.com/openclaw/skills/tree/main/skills/academic-research) | 使用 OpenAlex API 搜索学术论文 |
+
+### 📝 效率工具
+
+| 技能 | 描述 |
+|------|------|
+| [notion](https://github.com/openclaw/skills/tree/main/skills/notion) | Notion 集成 |
+| [obsidian](https://github.com/openclaw/skills/tree/main/skills/obsidian) | Obsidian 笔记 |
+| [trello](https://github.com/openclaw/skills/tree/main/skills/trello) | Trello 看板管理 |
+| [apple-notes](https://github.com/openclaw/skills/tree/main/skills/apple-notes) | Apple Notes 集成 |
+| [apple-reminders](https://github.com/openclaw/skills/tree/main/skills/apple-reminders) | Apple 提醒事项集成 |
+
+### 💬 消息通道
+
+| 技能 | 描述 |
+|------|------|
+| [discord](https://github.com/openclaw/skills/tree/main/skills/discord) | Discord 机器人集成 |
+| [slack](https://github.com/openclaw/skills/tree/main/skills/slack) | Slack 机器人集成 |
+| [imsg](https://github.com/openclaw/skills/tree/main/skills/imsg) | iMessage 集成 |
+| [bluebubbles](https://github.com/openclaw/skills/tree/main/skills/bluebubbles) | BlueBubbles iMessage 服务器 |
+
+### 🎨 图像视频生成
+
+| 技能 | 描述 |
+|------|------|
+| [image-gen](https://github.com/openclaw/skills/tree/main/skills/image-gen) | Nano Banana Pro (Gemini 3) 文生图、图生图 |
+| [video-gen](https://github.com/openclaw/skills/tree/main/skills/video-gen) | Sora/Kling/Seedance/Veo 3 等视频生成 |
+| [openai-image-gen](https://github.com/openclaw/skills/tree/main/skills/openai-image-gen) | DALL-E 图像生成 |
+
+### 🏠 智能家居
+
+| 技能 | 描述 |
+|------|------|
+| [sonoscli](https://github.com/openclaw/skills/tree/main/skills/sonoscli) | Sonos 音箱控制 |
+| [openhue](https://github.com/openclaw/skills/tree/main/skills/openhue) | Philips Hue 控制 |
+| [spotify-player](https://github.com/openclaw/skills/tree/main/skills/spotify-player) | Spotify 播放控制 |
+
+### ⚡ DevOps
+
+| 技能 | 描述 |
+|------|------|
+| [n8n-automation](https://github.com/openclaw/skills/tree/main/skills/n8n-automation) | 设计 n8n 工作流 JSON |
+| [security-audit](https://github.com/openclaw/skills/tree/main/skills/security-audit) | Skill 安全扫描 + 系统安全加固 |
 
 ### 安装技能
 

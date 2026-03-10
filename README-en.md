@@ -2,98 +2,45 @@
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
-> 精选的 OpenClaw 教程、技能和使用案例集合。
+> A curated collection of OpenClaw tutorials, skills, and use cases.
 
 [English](#) | [简体中文](README.md)
 
 ---
 
-## 0. 一分钟了解 OpenClaw
+## 0. One Minute Introduction
 
 ### OpenClaw vs ChatGPT vs Claude Code
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                                                                             │
-│   ChatGPT                              OpenClaw                              │
-│   ─────────                            ─────────                            │
-│   ┌──────────┐                        ┌──────────┐                         │
-│   │  网页聊天  │                        │ 你的电脑  │                         │
-│   └────┬─────┘                        └────┬─────┘                         │
-│        │                                   │                               │
-│        ▼                                   ▼                               │
-│   ┌──────────┐    ┌────────────────────────────────────────┐              │
-│   │ OpenAI   │    │  ┌─────────┐  ┌─────────┐  ┌─────────┐ │              │
-│   │ 服务器    │    │  │ WhatsApp│  │ Telegram│  │ iMessage│ │              │
-│   └──────────┘    │  └────┬────┘  └────┬────┘  └────┬────┘ │              │
-│                   │       │            │            │       │              │
-│   ❌ 无法访问      │       └────────────┼────────────┘       │              │
-│      你的文件      │                    ▼                    │              │
-│      你的应用      │              ┌───────────┐              │              │
-│      你的设备      │              │  Gateway  │              │              │
-│                   │              │  (端口18789)│              │              │
-│   ❌ 数据存在      │              └─────┬─────┘              │              │
-│      别人服务器    │                    │                    │              │
-│                   │                    ▼                    │              │
-│   ❌ 无法自定义    │              ┌───────────┐              │              │
-│      行为和技能    │              │ AI Agent  │              │              │
-│                   │              │  (本地运行) │              │              │
-│                   │              └─────┬─────┘              │              │
-│                   │        ┌───────────┼───────────┐        │              │
-│                   │        ▼           ▼           ▼        │              │
-│                   │   ┌────────┐ ┌────────┐ ┌────────┐      │              │
-│                   │   │ 你的文件│ │ 你的应用│ │ 你的设备│      │              │
-│                   │   └────────┘ └────────┘ └────────┘      │              │
-│                   │                                        │              │
-│                   │  ✅ 数据在你自己手里                      │              │
-│                   │  ✅ 可访问你的所有工具                     │              │
-│                   │  ✅ 自定义技能和行为                       │              │
-│                   │  ✅ 24小时待命                           │              │
-│                   └────────────────────────────────────────┘              │
-│                                                                             │
-└─────────────────────────────────────────────────────────────────────────────┘
+![OpenClaw vs ChatGPT vs Claude Code](openclaw-vs-chatgpt-vs-claude-code.png)
 
-   Claude Code
-   ───────────
-   ┌──────────────┐
-   │   终端命令行   │
-   └──────┬───────┘
-          │
-          ▼
-   ┌──────────────┐
-   │  写代码专家   │  ✅ 专注编程
-   │              │  ✅ 本地运行
-   └──────────────┘  ❌ 只在终端使用
-                     ❌ 不连接聊天应用
-```
-
-| 特性 | ChatGPT | Claude Code | OpenClaw |
-|------|---------|-------------|----------|
-| **运行位置** | 云端 | 本地 | 本地 |
-| **数据隐私** | ❌ 存在别人服务器 | ✅ 本地 | ✅ 本地 |
-| **聊天应用集成** | ❌ | ❌ | ✅ WhatsApp/Telegram/Discord/iMessage |
-| **访问本地文件** | ❌ | ✅ | ✅ |
-| **自定义技能** | ❌ GPTs (有限) | ❌ | ✅ 无限扩展 |
-| **24小时待命** | ❌ 需要打开网页 | ❌ 需要打开终端 | ✅ 后台运行 |
-| **多智能体** | ❌ | ❌ | ✅ 可配置多个角色 |
-| **主要用途** | 通用聊天 | 编程助手 | 个人AI助理 |
+| Feature | ChatGPT | Claude Code | OpenClaw |
+|---------|---------|-------------|----------|
+| **Where it runs** | Cloud | Local | Local |
+| **Data privacy** | ❌ Stored on servers | ✅ Local | ✅ Local |
+| **Chat app integration** | ❌ | ❌ | ✅ WhatsApp/Telegram/Discord/iMessage |
+| **Access local files** | ❌ | ✅ | ✅ |
+| **Custom skills** | ❌ GPTs (limited) | ❌ | ✅ Unlimited |
+| **Always on** | ❌ Need browser | ❌ Need terminal | ✅ Background service |
+| **Multi-agent** | ❌ | ❌ | ✅ Multiple personas |
+| **Primary use** | General chat | Coding assistant | Personal AI assistant |
 
 ---
 
-## 1. 如何安装
+## 1. How to Install
 
-### 安装方式对比
+### Installation Options
 
-| 方式 | 难度 | 费用 | 适用场景 |
-|------|------|------|----------|
-| 官方安装 | ⭐⭐ | 免费 | 有技术基础，想要完整控制 |
-| EasyClaw | ⭐ | 免费 | 新手友好，一键安装 |
-| 腾讯云管家 | ⭐ | 付费 | 企业用户，需要托管服务 |
-| 阿里云无影 | ⭐⭐ | 付费 | 云端运行，多设备访问 |
+| Method | Difficulty | Cost | Best for |
+|--------|------------|------|----------|
+| Official Install | ⭐⭐ | Free | Tech-savvy users wanting full control |
+| EasyClaw | ⭐ | Free | Beginners, zero-config |
+| Tencent Cloud | ⭐ | Paid | Enterprise users needing managed service |
+| Alibaba Cloud | ⭐⭐ | Paid | Cloud-based, multi-device access |
 
-### 1.1 本地安装
+### 1.1 Local Installation
 
-#### 官方安装（推荐）
+#### Official (Recommended)
 
 ```bash
 # macOS / Linux
@@ -102,248 +49,302 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 # Windows (PowerShell)
 iwr -useb https://openclaw.ai/install.ps1 | iex
 
-# 或通过 npm
+# Or via npm
 npm install -g openclaw@latest
 ```
 
-安装后运行配置向导：
+After installation:
 
 ```bash
 openclaw onboard --install-daemon
-openclaw channels login  # 配置聊天通道
-openclaw gateway --port 18789  # 启动
+openclaw channels login  # Configure chat channels
+openclaw gateway --port 18789  # Start
 ```
 
-#### 第三方安装（更友好）
+#### Third-Party (More Beginner-Friendly)
 
-**EasyClaw** - 一键安装，零配置，无需 API Key
+**EasyClaw** - One-click install, zero config, no API key needed
 
 👉 https://sanwan.ai/easyclaw.html
 
-- 适合新手
-- 自动配置
-- 本地运行，数据安全
+- Beginner-friendly
+- Auto-configuration
+- Runs locally, data stays private
 
-**腾讯云管家** - 托管服务
+**Tencent Cloud Manager** - Managed service
 
 👉 https://claw.guanjia.qq.com
 
-- 企业级支持
-- 7×24 托管
-- 更多高级功能
+- Enterprise support
+- 24/7 managed hosting
+- Advanced features
 
-### 1.2 云上安装
+### 1.2 Cloud Installation
 
-**阿里云无影**
+**Alibaba Cloud Wuying**
 
 👉 https://help.aliyun.com/zh/wuying-workspace/use-cases/quickly-build-a-openclaw-through-a-cloud-computer-clawdbot
 
-- 云端运行
-- 多设备访问
-- 按需付费
+- Cloud-based
+- Multi-device access
+- Pay-as-you-go
 
-**腾讯云**
+**Tencent Cloud**
 
 👉 https://www.tencentcloud.com/act/pro/intl-openclaw
 
-- 国际版支持
-- 企业级部署
+- International support
+- Enterprise deployment
 
 ---
 
 ## 2. Awesome Skills
 
-OpenClaw 拥有 5400+ 社区技能，按类别整理。
+OpenClaw has 5400+ community skills. Here are some popular ones.
 
-> 完整技能列表：https://github.com/VoltAgent/awesome-openclaw-skills
+> Full list: https://github.com/VoltAgent/awesome-openclaw-skills
 
-### 热门技能类别
+### 🤖 AI & Coding
 
-| 类别 | 技能数 | 热门技能 |
-|------|--------|----------|
-| **🤖 AI & 编程** | 1222 | coding-agent, github, gemini |
-| **🌐 浏览器自动化** | 335 | browser-vision, web-scraper |
-| **🔍 搜索研究** | 350 | deep-research, web-search |
-| **⚡ DevOps** | 409 | n8n-automation, security-audit |
-| **🎨 图像视频生成** | 169 | image-gen, video-gen |
-| **🍎 Apple 应用** | 44 | apple-notes, apple-reminders |
-| **📝 效率工具** | 206 | notion, obsidian, trello |
-| **💬 消息通道** | 149 | discord, slack, imsg |
-| **🏠 智能家居** | 43 | sonoscli, openhue |
+| Skill | Description |
+|-------|-------------|
+| [coding-agent](https://github.com/openclaw/skills/tree/main/skills/coding-agent) | Delegate coding tasks to Codex, Claude Code, or Pi agents |
+| [github](https://github.com/openclaw/skills/tree/main/skills/github) | GitHub operations: PRs, Issues, CI, code search |
+| [gemini](https://github.com/openclaw/skills/tree/main/skills/gemini) | Use Gemini CLI for coding assistance |
+| [claude-code](https://github.com/openclaw/skills/tree/main/skills/claude-code-skill) | MCP integration for enhanced Claude Code |
 
-### 安装技能
+### 🌐 Browser Automation
+
+| Skill | Description |
+|-------|-------------|
+| [browser-vision](https://github.com/openclaw/skills/tree/main/skills/browser-vision) | Headless Chrome screenshots, web automation, visual debugging |
+| [web-scraper](https://github.com/openclaw/skills/tree/main/skills/web-scraper) | Access anti-scraping sites: WeChat/Twitter/Reddit |
+| [agent-browser](https://github.com/openclaw/skills/tree/main/skills/agent-browser) | Headless browser automation CLI optimized for AI agents |
+
+### 🔍 Search & Research
+
+| Skill | Description |
+|-------|-------------|
+| [deep-research](https://github.com/openclaw/skills/tree/main/skills/deep-research) | Multi-engine search + web extraction + structured analysis |
+| [web-search](https://github.com/openclaw/skills/tree/main/skills/web-search) | Brave Search + DuckDuckGo multi-engine search |
+| [academic-research](https://github.com/openclaw/skills/tree/main/skills/academic-research) | Search academic papers using OpenAlex API |
+
+### 📝 Productivity
+
+| Skill | Description |
+|-------|-------------|
+| [notion](https://github.com/openclaw/skills/tree/main/skills/notion) | Notion integration |
+| [obsidian](https://github.com/openclaw/skills/tree/main/skills/obsidian) | Obsidian notes |
+| [trello](https://github.com/openclaw/skills/tree/main/skills/trello) | Trello board management |
+| [apple-notes](https://github.com/openclaw/skills/tree/main/skills/apple-notes) | Apple Notes integration |
+| [apple-reminders](https://github.com/openclaw/skills/tree/main/skills/apple-reminders) | Apple Reminders integration |
+
+### 💬 Messaging
+
+| Skill | Description |
+|-------|-------------|
+| [discord](https://github.com/openclaw/skills/tree/main/skills/discord) | Discord bot integration |
+| [slack](https://github.com/openclaw/skills/tree/main/skills/slack) | Slack bot integration |
+| [imsg](https://github.com/openclaw/skills/tree/main/skills/imsg) | iMessage integration |
+| [bluebubbles](https://github.com/openclaw/skills/tree/main/skills/bluebubbles) | BlueBubbles iMessage server |
+
+### 🎨 Image & Video Generation
+
+| Skill | Description |
+|-------|-------------|
+| [image-gen](https://github.com/openclaw/skills/tree/main/skills/image-gen) | Nano Banana Pro (Gemini 3) text-to-image, image-to-image |
+| [video-gen](https://github.com/openclaw/skills/tree/main/skills/video-gen) | Video generation with Sora/Kling/Seedance/Veo 3 |
+| [openai-image-gen](https://github.com/openclaw/skills/tree/main/skills/openai-image-gen) | DALL-E image generation |
+
+### 🏠 Smart Home
+
+| Skill | Description |
+|-------|-------------|
+| [sonoscli](https://github.com/openclaw/skills/tree/main/skills/sonoscli) | Sonos speaker control |
+| [openhue](https://github.com/openclaw/skills/tree/main/skills/openhue) | Philips Hue control |
+| [spotify-player](https://github.com/openclaw/skills/tree/main/skills/spotify-player) | Spotify playback control |
+
+### ⚡ DevOps
+
+| Skill | Description |
+|-------|-------------|
+| [n8n-automation](https://github.com/openclaw/skills/tree/main/skills/n8n-automation) | Design n8n workflow JSON |
+| [security-audit](https://github.com/openclaw/skills/tree/main/skills/security-audit) | Skill security scanning + system hardening |
+
+### Installing Skills
 
 ```bash
-# 从 ClawHub 安装
+# From ClawHub
 clawhub install <skill-slug>
 
-# 或直接把技能链接发给你的 OpenClaw
-# 它会自动安装
+# Or just send the skill link to your OpenClaw
+# It will install automatically
 ```
 
 ---
 
 ## 3. Skill Packs
 
-预设技能包，一键配置特定场景的 AI 助理。
+Pre-configured skill packs for specific use cases.
 
-> 来源：https://sanwan.ai/skills.html
+> Source: https://sanwan.ai/skills.html
 
-### 🦸 超级助理
+### 🦸 Super Assistant
 
-适合：个人日常助理
+Best for: Personal daily assistant
 
-**核心技能：**
-- 🌐 网页搜索
-- 📧 邮件管理
-- 📅 飞书日历
-- 📄 飞书文档
-- 🌤️ 天气查询
+**Core Skills:**
+- 🌐 Web Search
+- 📧 Email Management
+- 📅 Feishu Calendar
+- 📄 Feishu Docs
+- 🌤️ Weather
 
-**配置提示词：**
+**System Prompt:**
 ```
-你是一个高效的个人助理。每天早上检查我的日程和邮件，
-提醒重要事项。当我问问题时，先搜索网络获取最新信息。
-使用飞书记录重要信息，用飞书日历管理我的日程。
+You are an efficient personal assistant. Every morning check my
+schedule and emails, remind me of important items. When I ask
+questions, search the web first for latest information. Use Feishu
+to record important info and manage my calendar.
 ```
 
 ---
 
-### ✍️ 内容创作者
+### ✍️ Content Creator
 
-适合：公众号、小红书、Twitter 运营
+Best for: WeChat Official Account, Xiaohongshu, Twitter
 
-**核心技能：**
-- 🖼️ AI 图片生成
-- 🧑 AI 文本人性化
-- 💚 微信公众号
+**Core Skills:**
+- 🖼️ AI Image Generation
+- 🧑 AI Text Humanizer
+- 💚 WeChat Official Account
 - 🐦 Twitter / X
-- 📕 小红书运营
-- 📄 PDF 生成
+- 📕 Xiaohongshu
+- 📄 PDF Generation
 
-**配置提示词：**
+**System Prompt:**
 ```
-你是一个专业的内容创作者。帮我：
-1. 生成吸引人的图片
-2. 把文案改写成不同平台风格（小红书活泼、公众号正式）
-3. 使用人性化工具去除 AI 味
-4. 发布前生成 PDF 预览让我确认
-```
-
----
-
-### 📈 股票分析师
-
-适合：A股/港股/美股投资
-
-**核心技能：**
-- 📈 股票监控
-- 📊 股票深度分析
-- 🇭🇰 港股 AI 投研
-
-**配置提示词：**
-```
-你是一个谨慎的股票分析师。帮我：
-1. 监控我关注的股票，重要指标变化时提醒
-2. 提供多维度分析（基本面、技术面、资金面）
-3. 给出客观分析，不提供具体买卖建议
-4. 用飞书记录每日市场观察
+You are a professional content creator. Help me:
+1. Generate attractive images
+2. Rewrite copy in different platform styles
+3. Use humanizer tools to remove AI flavor
+4. Generate PDF preview before publishing
 ```
 
 ---
 
-### 🌊 出海运营官
+### 📈 Stock Analyst
 
-适合：海外市场运营
+Best for: A-share/HK/US stock investing
 
-**核心技能：**
-- 🌐 网页搜索
-- 💼 LinkedIn 运营
+**Core Skills:**
+- 📈 Stock Monitor
+- 📊 Stock Analysis
+- 🇭🇰 HK Stock Research
+
+**System Prompt:**
+```
+You are a cautious stock analyst. Help me:
+1. Monitor my watchlist, alert on significant changes
+2. Provide multi-dimensional analysis
+3. Give objective analysis, no specific buy/sell advice
+4. Record daily market observations in Feishu
+```
+
+---
+
+### 🌊 Overseas Operations
+
+Best for: International market operations
+
+**Core Skills:**
+- 🌐 Web Search
+- 💼 LinkedIn
 - 🐦 Twitter / X
-- 🔬 深度研究
-- 🕵️ 竞品研究
+- 🔬 Deep Research
+- 🕵️ Competitor Research
 
-**配置提示词：**
+**System Prompt:**
 ```
-你是一个海外市场运营专家。帮我：
-1. 用英文在各平台发布内容
-2. 监控竞品动态
-3. 分析目标市场趋势
-4. 维护 LinkedIn 专业形象
-5. 运营 Twitter 账号获取海外用户
+You are an overseas market operations expert. Help me:
+1. Publish content in English on various platforms
+2. Monitor competitor activities
+3. Analyze target market trends
+4. Maintain LinkedIn professional presence
+5. Run Twitter account to acquire overseas users
 ```
 
 ---
 
-### 🛒 电商运营
+### 🛒 E-commerce Operations
 
-适合：淘宝/京东/拼多多运营
+Best for: Taobao/JD/Pinduoduo
 
-**核心技能：**
-- 🖼️ AI 图片生成
-- ✍️ SEO 内容写作
-- 📕 小红书运营
-- 🔬 深度研究
+**Core Skills:**
+- 🖼️ AI Image Generation
+- ✍️ SEO Content Writing
+- 📕 Xiaohongshu
+- 🔬 Deep Research
 
-**配置提示词：**
+**System Prompt:**
 ```
-你是一个电商运营专家。帮我：
-1. 生成商品主图和详情图
-2. 写 SEO 优化的商品标题和描述
-3. 在小红书种草推广
-4. 分析竞品定价和策略
+You are an e-commerce operations expert. Help me:
+1. Generate product images
+2. Write SEO-optimized titles and descriptions
+3. Create Xiaohongshu seeding posts
+4. Analyze competitor pricing and strategies
 ```
 
 ---
 
 ## 4. Awesome Use Cases
 
-真实的使用案例，展示 OpenClaw 能做什么。
+Real-world examples of how people use OpenClaw.
 
-> 完整用例：https://github.com/hesamsheikh/awesome-openclaw-usecases
+> Full list: https://github.com/hesamsheikh/awesome-openclaw-usecases
 
-### 📰 内容消费
+### 📰 Content Consumption
 
-| 用例 | 描述 |
-|------|------|
-| [Daily Reddit Digest](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/daily-reddit-digest.md) | 自动总结你关注的 subreddit |
-| [Daily YouTube Digest](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/daily-youtube-digest.md) | 每日总结你喜欢频道的视频 |
-| [Multi-Source Tech News](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/multi-source-tech-news-digest.md) | 从 109+ 来源聚合科技新闻 |
+| Use Case | Description |
+|----------|-------------|
+| [Daily Reddit Digest](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/daily-reddit-digest.md) | Auto-summarize your favorite subreddits |
+| [Daily YouTube Digest](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/daily-youtube-digest.md) | Daily summaries of your favorite channels |
+| [Multi-Source Tech News](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/multi-source-tech-news-digest.md) | Aggregate tech news from 109+ sources |
 
-### 🎬 内容创作
+### 🎬 Content Creation
 
-| 用例 | 描述 |
-|------|------|
-| [YouTube Content Pipeline](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/youtube-content-pipeline.md) | 自动化视频选题、研究、追踪 |
-| [Multi-Agent Content Factory](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/content-factory.md) | 多智能体协作生产内容 |
-| [Podcast Production](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/podcast-production-pipeline.md) | 播客全流程自动化 |
+| Use Case | Description |
+|----------|-------------|
+| [YouTube Content Pipeline](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/youtube-content-pipeline.md) | Automate video idea scouting and research |
+| [Multi-Agent Content Factory](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/content-factory.md) | Multi-agent collaborative content production |
+| [Podcast Production](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/podcast-production-pipeline.md) | Full podcast workflow automation |
 
-### 💼 效率提升
+### 💼 Productivity
 
-| 用例 | 描述 |
-|------|------|
-| [Personal CRM](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/personal-crm.md) | 自动发现和追踪联系人 |
-| [Second Brain](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/second-brain.md) | 发消息给机器人记录，可搜索的知识库 |
-| [Custom Morning Brief](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/custom-morning-brief.md) | 定制每日早报 |
-| [Inbox De-clutter](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/inbox-declutter.md) | 自动总结订阅邮件 |
+| Use Case | Description |
+|----------|-------------|
+| [Personal CRM](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/personal-crm.md) | Auto-discover and track contacts |
+| [Second Brain](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/second-brain.md) | Message the bot to record, searchable knowledge base |
+| [Custom Morning Brief](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/custom-morning-brief.md) | Customized daily morning briefing |
+| [Inbox De-clutter](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/inbox-declutter.md) | Auto-summarize newsletter subscriptions |
 
-### 🏠 自动化
+### 🏠 Automation
 
-| 用例 | 描述 |
-|------|------|
-| [Self-Healing Home Server](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/self-healing-home-server.md) | 自愈家庭服务器 |
-| [n8n Workflow Orchestration](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/n8n-workflow-orchestration.md) | 通过 n8n 编排自动化流程 |
+| Use Case | Description |
+|----------|-------------|
+| [Self-Healing Home Server](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/self-healing-home-server.md) | Self-healing home server with SSH access |
+| [n8n Workflow Orchestration](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/n8n-workflow-orchestration.md) | Orchestrate automation via n8n webhooks |
 
 ---
 
-## 资源链接
+## Resources
 
-- 🌐 [OpenClaw 官网](https://openclaw.ai)
-- 📚 [官方文档](https://docs.openclaw.ai)
+- 🌐 [OpenClaw Website](https://openclaw.ai)
+- 📚 [Documentation](https://docs.openclaw.ai)
 - 💻 [GitHub](https://github.com/openclaw/openclaw)
-- 💬 [Discord 社区](https://discord.com/invite/clawd)
-- 🛒 [ClawHub 技能市场](https://clawhub.com)
+- 💬 [Discord](https://discord.com/invite/clawd)
+- 🛒 [ClawHub](https://clawhub.com)
 
 ---
 
-**维护者：** [Zero君](https://x.com/zerolu_eth) | [CyberBara](https://cyberbara.com) - 统一 AI 图像与视频生成平台
+**Maintainer:** [Zero君](https://x.com/zerolu_eth) | [CyberBara](https://cyberbara.com) - Unified AI image & video generation platform
