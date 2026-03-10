@@ -81,6 +81,14 @@ openclaw gateway --port 18789  # Start
 
 ### 1.2 Cloud Installation
 
+**Miaoda (秒答)**
+
+👉 https://miaoda.feishu.cn/bot-landing?open-from=claw_official_website
+
+- 一键云端部署
+- 开箱即用
+- 无需配置
+
 **Alibaba Cloud Wuying**
 
 👉 https://help.aliyun.com/zh/wuying-workspace/use-cases/quickly-build-a-openclaw-through-a-cloud-computer-clawdbot
@@ -197,17 +205,17 @@ Best for: Office workers, managers, entrepreneurs
 
 **One-Click Install Prompt:**
 ```
-请帮我配置「超级助理」技能包，包含以下技能：
-- 邮件管理
-- 飞书日历
-- 飞书文档
-- 网页搜索 & 分析
-- 天气查询
-- 基础智能包
+Please configure the "Super Assistant" skill pack with these skills:
+- Email Management
+- Feishu Calendar
+- Feishu Docs
+- Web Search & Analysis
+- Weather
+- Basic Intelligence Pack
 
-技能包说明页：https://sanwan.ai/skills/pack-assistant.html
+Skill pack details: https://sanwan.ai/skills/pack-assistant.html
 
-请逐个学习每个技能的详情页，然后告诉我你已经准备好了。
+Please learn each skill's details page one by one, then tell me when you're ready.
 ```
 
 ---
@@ -220,15 +228,15 @@ Best for: Content creators, brand operators, personal IP builders
 
 **One-Click Install Prompt:**
 ```
-请帮我配置「内容创作者」技能包，包含以下技能：
-- 微信公众号
-- 博客写手
-- AI 图片生成
-- AI 文本人性化
+Please configure the "Content Creator" skill pack with these skills:
+- WeChat Official Account
+- Blog Writer
+- AI Image Generation
+- AI Text Humanizer
 
-技能包说明页：https://sanwan.ai/skills/pack-creator.html
+Skill pack details: https://sanwan.ai/skills/pack-creator.html
 
-请逐个学习每个技能的详情页，然后告诉我你已经准备好了。
+Please learn each skill's details page one by one, then tell me when you're ready.
 ```
 
 ---
@@ -241,15 +249,15 @@ Best for: Stock traders, investors, quantitative enthusiasts
 
 **One-Click Install Prompt:**
 ```
-请帮我配置「股票分析师」技能包，包含以下技能：
-- 网页搜索 & 分析
-- 深度研究
-- 代码助手
-- 基础智能包
+Please configure the "Stock Analyst" skill pack with these skills:
+- Web Search & Analysis
+- Deep Research
+- Coding Assistant
+- Basic Intelligence Pack
 
-技能包说明页：https://sanwan.ai/skills/pack-trader.html
+Skill pack details: https://sanwan.ai/skills/pack-trader.html
 
-请逐个学习每个技能的详情页，然后告诉我你已经准备好了。
+Please learn each skill's details page one by one, then tell me when you're ready.
 ```
 
 ---
@@ -262,16 +270,16 @@ Best for: Overseas enterprises, cross-border e-commerce, international markets
 
 **One-Click Install Prompt:**
 ```
-请帮我配置「出海运营官」技能包，包含以下技能：
+Please configure the "Overseas Operations" skill pack with these skills:
 - Twitter / X
 - SEO Writer
-- 网页搜索 & 分析
-- 深度研究
-- 基础智能包
+- Web Search & Analysis
+- Deep Research
+- Basic Intelligence Pack
 
-技能包说明页：https://sanwan.ai/skills/pack-overseas.html
+Skill pack details: https://sanwan.ai/skills/pack-overseas.html
 
-请逐个学习每个技能的详情页，然后告诉我你已经准备好了。
+Please learn each skill's details page one by one, then tell me when you're ready.
 ```
 
 ---
@@ -284,15 +292,15 @@ Best for: E-commerce sellers, brand owners, operations teams
 
 **One-Click Install Prompt:**
 ```
-请帮我配置「电商运营」技能包，包含以下技能：
-- AI 图片生成
+Please configure the "E-commerce Operations" skill pack with these skills:
+- AI Image Generation
 - SEO Writer
-- 网页搜索 & 分析
-- 深度研究
+- Web Search & Analysis
+- Deep Research
 
-技能包说明页：https://sanwan.ai/skills/pack-ecommerce.html
+Skill pack details: https://sanwan.ai/skills/pack-ecommerce.html
 
-请逐个学习每个技能的详情页，然后告诉我你已经准备好了。
+Please learn each skill's details page one by one, then tell me when you're ready.
 ```
 
 ---

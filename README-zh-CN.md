@@ -81,6 +81,14 @@ openclaw gateway --port 18789  # 启动
 
 ### 1.2 云上安装
 
+**秒答 (Miaoda)**
+
+👉 https://miaoda.feishu.cn/bot-landing?open-from=claw_official_website
+
+- 一键云端部署
+- 开箱即用
+- 无需配置
+
 **阿里云无影**
 
 👉 https://help.aliyun.com/zh/wuying-workspace/use-cases/quickly-build-a-openclaw-through-a-cloud-computer-clawdbot
