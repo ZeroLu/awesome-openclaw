@@ -4,7 +4,7 @@
 
 > 精选的 OpenClaw 教程、技能和使用案例集合。
 
-[English](README-en.md) | [简体中文](#)
+[English](#) | [简体中文](README.md)
 
 ---
 
