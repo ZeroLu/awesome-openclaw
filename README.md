@@ -191,108 +191,108 @@ Pre-configured skill packs for specific use cases.
 
 ### 🦸 Super Assistant
 
-Best for: Personal daily assistant
+Best for: Office workers, managers, entrepreneurs
 
-**Core Skills:**
-- 🌐 Web Search
-- 📧 Email Management
-- 📅 Feishu Calendar
-- 📄 Feishu Docs
-- 🌤️ Weather
+**Includes:** Email Management, Feishu Calendar, Feishu Docs, Web Search & Analysis, Weather, Basic Intelligence Pack
 
-**System Prompt:**
+**One-Click Install Prompt:**
 ```
-You are an efficient personal assistant. Every morning check my
-schedule and emails, remind me of important items. When I ask
-questions, search the web first for latest information. Use Feishu
-to record important info and manage my calendar.
+请帮我配置「超级助理」技能包，包含以下技能：
+- 邮件管理
+- 飞书日历
+- 飞书文档
+- 网页搜索 & 分析
+- 天气查询
+- 基础智能包
+
+技能包说明页：https://sanwan.ai/skills/pack-assistant.html
+
+请逐个学习每个技能的详情页，然后告诉我你已经准备好了。
 ```
 
 ---
 
 ### ✍️ Content Creator
 
-Best for: WeChat Official Account, Xiaohongshu, Twitter
+Best for: Content creators, brand operators, personal IP builders
 
-**Core Skills:**
-- 🖼️ AI Image Generation
-- 🧑 AI Text Humanizer
-- 💚 WeChat Official Account
-- 🐦 Twitter / X
-- 📕 Xiaohongshu
-- 📄 PDF Generation
+**Includes:** WeChat Official Account, Blog Writer, AI Image Generation, AI Text Humanizer
 
-**System Prompt:**
+**One-Click Install Prompt:**
 ```
-You are a professional content creator. Help me:
-1. Generate attractive images
-2. Rewrite copy in different platform styles
-3. Use humanizer tools to remove AI flavor
-4. Generate PDF preview before publishing
+请帮我配置「内容创作者」技能包，包含以下技能：
+- 微信公众号
+- 博客写手
+- AI 图片生成
+- AI 文本人性化
+
+技能包说明页：https://sanwan.ai/skills/pack-creator.html
+
+请逐个学习每个技能的详情页，然后告诉我你已经准备好了。
 ```
 
 ---
 
 ### 📈 Stock Analyst
 
-Best for: A-share/HK/US stock investing
+Best for: Stock traders, investors, quantitative enthusiasts
 
-**Core Skills:**
-- 📈 Stock Monitor
-- 📊 Stock Analysis
-- 🇭🇰 HK Stock Research
+**Includes:** Web Search & Analysis, Deep Research, Coding Assistant, Basic Intelligence Pack
 
-**System Prompt:**
+**One-Click Install Prompt:**
 ```
-You are a cautious stock analyst. Help me:
-1. Monitor my watchlist, alert on significant changes
-2. Provide multi-dimensional analysis
-3. Give objective analysis, no specific buy/sell advice
-4. Record daily market observations in Feishu
+请帮我配置「股票分析师」技能包，包含以下技能：
+- 网页搜索 & 分析
+- 深度研究
+- 代码助手
+- 基础智能包
+
+技能包说明页：https://sanwan.ai/skills/pack-trader.html
+
+请逐个学习每个技能的详情页，然后告诉我你已经准备好了。
 ```
 
 ---
 
-### 🌊 Overseas Operations
+### 🌏 Overseas Operations
 
-Best for: International market operations
+Best for: Overseas enterprises, cross-border e-commerce, international markets
 
-**Core Skills:**
-- 🌐 Web Search
-- 💼 LinkedIn
-- 🐦 Twitter / X
-- 🔬 Deep Research
-- 🕵️ Competitor Research
+**Includes:** Twitter / X, SEO Writer, Web Search & Analysis, Deep Research, Basic Intelligence Pack
 
-**System Prompt:**
+**One-Click Install Prompt:**
 ```
-You are an overseas market operations expert. Help me:
-1. Publish content in English on various platforms
-2. Monitor competitor activities
-3. Analyze target market trends
-4. Maintain LinkedIn professional presence
-5. Run Twitter account to acquire overseas users
+请帮我配置「出海运营官」技能包，包含以下技能：
+- Twitter / X
+- SEO Writer
+- 网页搜索 & 分析
+- 深度研究
+- 基础智能包
+
+技能包说明页：https://sanwan.ai/skills/pack-overseas.html
+
+请逐个学习每个技能的详情页，然后告诉我你已经准备好了。
 ```
 
 ---
 
 ### 🛒 E-commerce Operations
 
-Best for: Taobao/JD/Pinduoduo
+Best for: E-commerce sellers, brand owners, operations teams
 
-**Core Skills:**
-- 🖼️ AI Image Generation
-- ✍️ SEO Content Writing
-- 📕 Xiaohongshu
-- 🔬 Deep Research
+**Includes:** AI Image Generation, SEO Writer, Web Search & Analysis, Deep Research
 
-**System Prompt:**
+**One-Click Install Prompt:**
 ```
-You are an e-commerce operations expert. Help me:
-1. Generate product images
-2. Write SEO-optimized titles and descriptions
-3. Create Xiaohongshu seeding posts
-4. Analyze competitor pricing and strategies
+请帮我配置「电商运营」技能包，包含以下技能：
+- AI 图片生成
+- SEO Writer
+- 网页搜索 & 分析
+- 深度研究
+
+技能包说明页：https://sanwan.ai/skills/pack-ecommerce.html
+
+请逐个学习每个技能的详情页，然后告诉我你已经准备好了。
 ```
 
 ---
