@@ -6,7 +6,7 @@
 
 [OpenClaw](https://github.com/openclaw/openclaw) is an open-source AI assistant framework that runs locally on your machine. It supports multiple LLM providers, extensible skills, and cross-platform messaging channels.
 
-｜[English](#)｜[简体中文](#)｜
+｜[English](#)｜[简体中文](README-zh-CN.md)｜
 
 ## 📖 Table of Contents
 
@@ -283,8 +283,8 @@ Community-contributed skills for specialized workflows.
 
 | Skill | Description | Author |
 |-------|-------------|--------|
-| [content-promotion](#) | Multi-platform content promotion workflow (知乎, 掘金, Dev.to, Product Hunt, etc.) | [@ZeroLu](https://github.com/ZeroLu) |
-| [ultimate-ai-media-generator](#) | CyberBara Public API v1 image/video generation tasks | [@ZeroLu](https://github.com/ZeroLu) |
+| [content-promotion](skills/content-promotion/SKILL.md) | Multi-platform content promotion workflow (知乎, 掘金, Dev.to, Product Hunt, etc.) | [@ZeroLu](https://github.com/ZeroLu) |
+| [ultimate-ai-media-generator](skills/ultimate-ai-media-generator/SKILL.md) | CyberBara Public API v1 image/video generation tasks | [@ZeroLu](https://github.com/ZeroLu) |
 
 ### 📚 Feishu Integration
 
