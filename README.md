@@ -1,636 +1,349 @@
 # Awesome OpenClaw 🤖
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
-> A curated collection of **OpenClaw tutorials**, **skills**, and **use cases** for building your personal AI assistant.
+> 精选的 OpenClaw 教程、技能和使用案例集合。
 
-[OpenClaw](https://github.com/openclaw/openclaw) is an open-source AI assistant framework that runs locally on your machine. It supports multiple LLM providers, extensible skills, and cross-platform messaging channels.
-
-｜[English](#)｜[简体中文](README-zh-CN.md)｜
-
-## 📖 Table of Contents
-
-1. [What is OpenClaw](#1-what-is-openclaw)
-2. [Getting Started](#2-getting-started)
-3. [Core Concepts](#3-core-concepts)
-4. [Official Skills](#4-official-skills)
-5. [Community Skills](#5-community-skills)
-6. [Use Cases](#6-use-cases)
-7. [Skill Development](#7-skill-development)
-8. [Multi-Agent Routing](#8-multi-agent-routing)
-9. [Resources](#9-resources)
-10. [Contributing](#10-contributing)
+[English](README.md) | [简体中文](README-zh-CN.md)
 
 ---
 
-## 1. What is OpenClaw
+## 0. 一分钟了解 OpenClaw
 
-OpenClaw is a **self-hosted gateway** that connects your favorite chat apps — WhatsApp, Telegram, Discord, iMessage, and more — to AI coding agents like Pi. You run a single Gateway process on your own machine (or a server), and it becomes the bridge between your messaging apps and an always-available AI assistant.
-
-### Key Features
-
-| Feature | Description |
-|---------|-------------|
-| **Multi-channel Gateway** | WhatsApp, Telegram, Discord, iMessage with a single Gateway process |
-| **Plugin Channels** | Add Mattermost and more with extension packages |
-| **Multi-agent Routing** | Isolated sessions per agent, workspace, or sender |
-| **Media Support** | Send and receive images, audio, and documents |
-| **Web Control UI** | Browser dashboard for chat, config, sessions, and nodes |
-| **Mobile Nodes** | Pair iOS and Android nodes for Canvas, camera/screen, and voice workflows |
-| **Self-hosted** | Runs on your hardware, your rules |
-| **Open Source** | MIT licensed, community-driven |
-
-### How it Works
+### OpenClaw vs ChatGPT vs Claude Code
 
 ```
-┌─────────────────┐    ┌─────────────┐    ┌──────────────────┐
-│  Chat Apps      │    │  Gateway    │    │  AI Agent (Pi)   │
-│  - WhatsApp     │───▶│             │───▶│                  │
-│  - Telegram     │    │  (Port      │    │  - Claude        │
-│  - Discord      │    │   18789)    │    │  - GPT           │
-│  - iMessage     │    │             │    │  - Gemini        │
-└─────────────────┘    └─────────────┘    └──────────────────┘
-                              │
-                              ▼
-                       ┌─────────────┐
-                       │  Web UI     │
-                       │  Dashboard  │
-                       └─────────────┘
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│   ChatGPT                              OpenClaw                              │
+│   ─────────                            ─────────                            │
+│   ┌──────────┐                        ┌──────────┐                         │
+│   │  网页聊天  │                        │ 你的电脑  │                         │
+│   └────┬─────┘                        └────┬─────┘                         │
+│        │                                   │                               │
+│        ▼                                   ▼                               │
+│   ┌──────────┐    ┌────────────────────────────────────────┐              │
+│   │ OpenAI   │    │  ┌─────────┐  ┌─────────┐  ┌─────────┐ │              │
+│   │ 服务器    │    │  │ WhatsApp│  │ Telegram│  │ iMessage│ │              │
+│   └──────────┘    │  └────┬────┘  └────┬────┘  └────┬────┘ │              │
+│                   │       │            │            │       │              │
+│   ❌ 无法访问      │       └────────────┼────────────┘       │              │
+│      你的文件      │                    ▼                    │              │
+│      你的应用      │              ┌───────────┐              │              │
+│      你的设备      │              │  Gateway  │              │              │
+│                   │              │  (端口18789)│              │              │
+│   ❌ 数据存在      │              └─────┬─────┘              │              │
+│      别人服务器    │                    │                    │              │
+│                   │                    ▼                    │              │
+│   ❌ 无法自定义    │              ┌───────────┐              │              │
+│      行为和技能    │              │ AI Agent  │              │              │
+│                   │              │  (本地运行) │              │              │
+│                   │              └─────┬─────┘              │              │
+│                   │        ┌───────────┼───────────┐        │              │
+│                   │        ▼           ▼           ▼        │              │
+│                   │   ┌────────┐ ┌────────┐ ┌────────┐      │              │
+│                   │   │ 你的文件│ │ 你的应用│ │ 你的设备│      │              │
+│                   │   └────────┘ └────────┘ └────────┘      │              │
+│                   │                                        │              │
+│                   │  ✅ 数据在你自己手里                      │              │
+│                   │  ✅ 可访问你的所有工具                     │              │
+│                   │  ✅ 自定义技能和行为                       │              │
+│                   │  ✅ 24小时待命                           │              │
+│                   └────────────────────────────────────────┘              │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+   Claude Code
+   ───────────
+   ┌──────────────┐
+   │   终端命令行   │
+   └──────┬───────┘
+          │
+          ▼
+   ┌──────────────┐
+   │  写代码专家   │  ✅ 专注编程
+   │              │  ✅ 本地运行
+   └──────────────┘  ❌ 只在终端使用
+                     ❌ 不连接聊天应用
 ```
+
+| 特性 | ChatGPT | Claude Code | OpenClaw |
+|------|---------|-------------|----------|
+| **运行位置** | 云端 | 本地 | 本地 |
+| **数据隐私** | ❌ 存在别人服务器 | ✅ 本地 | ✅ 本地 |
+| **聊天应用集成** | ❌ | ❌ | ✅ WhatsApp/Telegram/Discord/iMessage |
+| **访问本地文件** | ❌ | ✅ | ✅ |
+| **自定义技能** | ❌ GPTs (有限) | ❌ | ✅ 无限扩展 |
+| **24小时待命** | ❌ 需要打开网页 | ❌ 需要打开终端 | ✅ 后台运行 |
+| **多智能体** | ❌ | ❌ | ✅ 可配置多个角色 |
+| **主要用途** | 通用聊天 | 编程助手 | 个人AI助理 |
 
 ---
 
-## 2. Getting Started
+## 1. 如何安装
 
-### Prerequisites
+### 安装方式对比
 
-- Node.js `>=22`
-- pnpm (optional; recommended if building from source)
-- **Recommended:** Brave Search API key for web search
+| 方式 | 难度 | 费用 | 适用场景 |
+|------|------|------|----------|
+| 官方安装 | ⭐⭐ | 免费 | 有技术基础，想要完整控制 |
+| EasyClaw | ⭐ | 免费 | 新手友好，一键安装 |
+| 腾讯云管家 | ⭐ | 付费 | 企业用户，需要托管服务 |
+| 阿里云无影 | ⭐⭐ | 付费 | 云端运行，多设备访问 |
 
-### Installation
+### 1.1 本地安装
 
-**Via npm:**
+#### 官方安装（推荐）
+
 ```bash
+# macOS / Linux
+curl -fsSL https://openclaw.ai/install.sh | bash
+
+# Windows (PowerShell)
+iwr -useb https://openclaw.ai/install.ps1 | iex
+
+# 或通过 npm
 npm install -g openclaw@latest
 ```
 
-**Via curl (recommended):**
-```bash
-curl -fsSL https://openclaw.ai/install.sh | bash
-```
-
-**Windows (PowerShell):**
-```powershell
-iwr -useb https://openclaw.ai/install.ps1 | iex
-```
-
-### Quick Start (3 steps)
+安装后运行配置向导：
 
 ```bash
-# 1. Run onboarding wizard
 openclaw onboard --install-daemon
-
-# 2. Pair WhatsApp (or other channels)
-openclaw channels login
-
-# 3. Start the Gateway
-openclaw gateway --port 18789
+openclaw channels login  # 配置聊天通道
+openclaw gateway --port 18789  # 启动
 ```
 
-### Dashboard
+#### 第三方安装（更友好）
 
-Open the browser Control UI after the Gateway starts:
+**EasyClaw** - 一键安装，零配置，无需 API Key
 
-- Local default: http://127.0.0.1:18789/
-- Remote access: [Web surfaces](https://docs.openclaw.ai/web) and [Tailscale](https://docs.openclaw.ai/gateway/tailscale)
+👉 https://sanwan.ai/easyclaw.html
 
-### Pairing Your First Channel
+- 适合新手
+- 自动配置
+- 本地运行，数据安全
 
-#### WhatsApp (QR Login)
+**腾讯云管家** - 托管服务
+
+👉 https://claw.guanjia.qq.com
+
+- 企业级支持
+- 7×24 托管
+- 更多高级功能
+
+### 1.2 云上安装
+
+**阿里云无影**
+
+👉 https://help.aliyun.com/zh/wuying-workspace/use-cases/quickly-build-a-openclaw-through-a-cloud-computer-clawdbot
+
+- 云端运行
+- 多设备访问
+- 按需付费
+
+**腾讯云**
+
+👉 https://www.tencentcloud.com/act/pro/intl-openclaw
+
+- 国际版支持
+- 企业级部署
+
+---
+
+## 2. Awesome Skills
+
+OpenClaw 拥有 5400+ 社区技能，按类别整理。
+
+> 完整技能列表：https://github.com/VoltAgent/awesome-openclaw-skills
+
+### 热门技能类别
+
+| 类别 | 技能数 | 热门技能 |
+|------|--------|----------|
+| **🤖 AI & 编程** | 1222 | coding-agent, github, gemini |
+| **🌐 浏览器自动化** | 335 | browser-vision, web-scraper |
+| **🔍 搜索研究** | 350 | deep-research, web-search |
+| **⚡ DevOps** | 409 | n8n-automation, security-audit |
+| **🎨 图像视频生成** | 169 | image-gen, video-gen |
+| **🍎 Apple 应用** | 44 | apple-notes, apple-reminders |
+| **📝 效率工具** | 206 | notion, obsidian, trello |
+| **💬 消息通道** | 149 | discord, slack, imsg |
+| **🏠 智能家居** | 43 | sonoscli, openhue |
+
+### 安装技能
 
 ```bash
-openclaw channels login
-```
+# 从 ClawHub 安装
+clawhub install <skill-slug>
 
-Scan the QR code via WhatsApp → Settings → Linked Devices.
-
-#### Telegram / Discord
-
-The wizard can write tokens/config for you. For manual setup:
-
-- **Telegram:** Create a bot via [@BotFather](https://t.me/botfather), get the token
-- **Discord:** Create a bot in [Developer Portal](https://discord.com/developers/applications)
-
-### Private Message Security
-
-By default, unknown private messages receive a pairing code. Approve before the bot responds:
-
-```bash
-openclaw pairing list whatsapp
-openclaw pairing approve whatsapp <code>
+# 或直接把技能链接发给你的 OpenClaw
+# 它会自动安装
 ```
 
 ---
 
-## 3. Core Concepts
+## 3. Skill Packs
 
-### Agent Workspace
+预设技能包，一键配置特定场景的 AI 助理。
 
-Each agent has a workspace containing:
+> 来源：https://sanwan.ai/skills.html
 
+### 🦸 超级助理
+
+适合：个人日常助理
+
+**核心技能：**
+- 🌐 网页搜索
+- 📧 邮件管理
+- 📅 飞书日历
+- 📄 飞书文档
+- 🌤️ 天气查询
+
+**配置提示词：**
 ```
-~/.openclaw/workspace/
-├── AGENTS.md      # Agent behavior rules
-├── SOUL.md        # Personality and tone
-├── USER.md        # User preferences
-├── MEMORY.md      # Long-term memory
-├── HEARTBEAT.md   # Periodic task config
-├── TOOLS.md       # Local tool notes
-├── memory/        # Daily logs
-│   └── 2026-03-10.md
-└── skills/        # Custom skills
-```
-
-### Memory System
-
-OpenClaw has a two-tier memory system:
-
-- **Daily notes:** `memory/YYYY-MM-DD.md` — raw logs of what happened
-- **Long-term:** `MEMORY.md` — curated memories (only loaded in main session)
-
-**Important:** Load `MEMORY.md` only in direct chats with your human, NOT in shared contexts (Discord, group chats) for security.
-
-### Heartbeats
-
-Heartbeats are periodic checks that run when the agent receives a poll. Use them for:
-
-- Checking emails, calendar, notifications
-- Updating memory files
-- Background maintenance tasks
-- Proactive outreach (with care)
-
-Configure in `HEARTBEAT.md`:
-
-```markdown
-# Heartbeat Tasks
-
-## 1. Email Check
-- Check for urgent unread messages
-
-## 2. Calendar
-- Look for upcoming events in next 24h
-```
-
-### Skills
-
-Skills teach the agent how to use tools. Each skill is a folder with `SKILL.md`:
-
-```markdown
----
-name: my-skill
-description: What this skill does
----
-
-# Instructions
-How to use this skill...
-```
-
-Skill locations (precedence from high to low):
-1. `<workspace>/skills` — per-agent skills
-2. `~/.openclaw/skills` — shared skills
-3. Bundled skills — shipped with OpenClaw
-
----
-
-## 4. Official Skills
-
-OpenClaw comes with 50+ built-in skills for various tasks.
-
-### 🤖 AI & Coding
-
-| Skill | Description |
-|-------|-------------|
-| [coding-agent](https://github.com/openclaw/openclaw/tree/main/skills/coding-agent) | Delegate coding tasks to Codex, Claude Code, or Pi agents |
-| [gh-issues](https://github.com/openclaw/openclaw/tree/main/skills/gh-issues) | Fetch GitHub issues, spawn sub-agents to implement fixes and open PRs |
-| [github](https://github.com/openclaw/openclaw/tree/main/skills/github) | GitHub operations via `gh` CLI: issues, PRs, CI runs |
-| [summarize](https://github.com/openclaw/openclaw/tree/main/skills/summarize) | Text summarization |
-| [gemini](https://github.com/openclaw/openclaw/tree/main/skills/gemini) | Use Gemini CLI for coding assistance |
-
-### 📝 Productivity
-
-| Skill | Description |
-|-------|-------------|
-| [notion](https://github.com/openclaw/openclaw/tree/main/skills/notion) | Notion integration |
-| [obsidian](https://github.com/openclaw/openclaw/tree/main/skills/obsidian) | Obsidian note-taking |
-| [apple-notes](https://github.com/openclaw/openclaw/tree/main/skills/apple-notes) | Apple Notes integration |
-| [apple-reminders](https://github.com/openclaw/openclaw/tree/main/skills/apple-reminders) | Apple Reminders integration |
-| [things-mac](https://github.com/openclaw/openclaw/tree/main/skills/things-mac) | Things 3 task manager |
-| [trello](https://github.com/openclaw/openclaw/tree/main/skills/trello) | Trello board management |
-| [bear-notes](https://github.com/openclaw/openclaw/tree/main/skills/bear-notes) | Bear notes integration |
-
-### 💬 Messaging Channels
-
-| Skill | Description |
-|-------|-------------|
-| [discord](https://github.com/openclaw/openclaw/tree/main/skills/discord) | Discord bot integration |
-| [slack](https://github.com/openclaw/openclaw/tree/main/skills/slack) | Slack bot integration |
-| [imsg](https://github.com/openclaw/openclaw/tree/main/skills/imsg) | iMessage integration |
-| [bluebubbles](https://github.com/openclaw/openclaw/tree/main/skills/bluebubbles) | BlueBubbles iMessage server |
-
-### 🔧 Utilities
-
-| Skill | Description |
-|-------|-------------|
-| [weather](https://github.com/openclaw/openclaw/tree/main/skills/weather) | Weather forecasts via wttr.in or Open-Meteo |
-| [tmux](https://github.com/openclaw/openclaw/tree/main/skills/tmux) | Remote-control tmux sessions |
-| [video-frames](https://github.com/openclaw/openclaw/tree/main/skills/video-frames) | Extract frames from videos using ffmpeg |
-| [session-logs](https://github.com/openclaw/openclaw/tree/main/skills/session-logs) | Search and analyze session logs using jq |
-| [skill-creator](https://github.com/openclaw/openclaw/tree/main/skills/skill-creator) | Create and package new skills |
-| [healthcheck](https://github.com/openclaw/openclaw/tree/main/skills/healthcheck) | Host security hardening and risk-tolerance configuration |
-
-### 🎨 Media & Generation
-
-| Skill | Description |
-|-------|-------------|
-| [openai-image-gen](https://github.com/openclaw/openclaw/tree/main/skills/openai-image-gen) | DALL-E image generation |
-| [openai-whisper](https://github.com/openclaw/openclaw/tree/main/skills/openai-whisper) | Local Whisper transcription |
-| [openai-whisper-api](https://github.com/openclaw/openclaw/tree/main/skills/openai-whisper-api) | OpenAI Whisper API transcription |
-| [sag](https://github.com/openclaw/openclaw/tree/main/skills/sag) | ElevenLabs TTS integration |
-| [sherpa-onnx-tts](https://github.com/openclaw/openclaw/tree/main/skills/sherpa-onnx-tts) | Local TTS with Sherpa-ONNX |
-
-### 🏠 Smart Home
-
-| Skill | Description |
-|-------|-------------|
-| [sonoscli](https://github.com/openclaw/openclaw/tree/main/skills/sonoscli) | Sonos speaker control |
-| [openhue](https://github.com/openclaw/openclaw/tree/main/skills/openhue) | Philips Hue control |
-| [spotify-player](https://github.com/openclaw/openclaw/tree/main/skills/spotify-player) | Spotify playback control |
-
-### 🔒 Security & DevOps
-
-| Skill | Description |
-|-------|-------------|
-| [1password](https://github.com/openclaw/openclaw/tree/main/skills/1password) | 1Password integration |
-
----
-
-## 5. Community Skills
-
-Community-contributed skills for specialized workflows.
-
-### 📣 Content & Marketing
-
-| Skill | Description | Author |
-|-------|-------------|--------|
-| [content-promotion](skills/content-promotion/SKILL.md) | Multi-platform content promotion workflow (知乎, 掘金, Dev.to, Product Hunt, etc.) | [@ZeroLu](https://github.com/ZeroLu) |
-| [ultimate-ai-media-generator](skills/ultimate-ai-media-generator/SKILL.md) | CyberBara Public API v1 image/video generation tasks | [@ZeroLu](https://github.com/ZeroLu) |
-
-### 📚 Feishu Integration
-
-OpenClaw has built-in Feishu (Lark) support with these capabilities:
-
-- **Documents:** Read, write, append, create tables, upload images
-- **Bitable:** CRUD operations on records and fields
-- **Drive:** File and folder management
-- **Wiki:** Knowledge base navigation
-- **Chat:** Get chat info and members
-
----
-
-## 6. Use Cases
-
-Real-world examples of how people use OpenClaw.
-
-### 6.1. Content Creator Assistant
-
-Automate content creation and cross-platform publishing:
-
-```
-User: "Check my X bookmarks and recommend content to repost to Jike"
-```
-
-**Workflow:**
-1. Agent opens X bookmarks via browser
-2. Scrapes recent bookmarks with metadata (views, likes)
-3. Filters by engagement (views > 100K, likes > 1000)
-4. Translates content to Chinese
-5. Downloads media (videos/images)
-6. Writes recommendations to `daily_recommendations.md`
-7. Waits for user confirmation before posting
-
-**Related Skills:** `browser`, `web_fetch`, `video-frames`
-
-### 6.2. Developer Productivity
-
-**Code Review:**
-```
-User: "Review the latest PR in openclaw/openclaw"
-```
-
-Agent:
-1. Uses `gh` CLI to fetch PR details
-2. Reads changed files
-3. Analyzes code quality, suggests improvements
-4. Posts review comments via `gh pr comment`
-
-**Issue Management:**
-```
-User: "Create a PR to fix issue #123"
-```
-
-Agent:
-1. Reads issue details
-2. Explores codebase to understand context
-3. Implements fix
-4. Creates branch, commits, pushes
-5. Opens PR with description
-
-**Related Skills:** `github`, `coding-agent`, `gh-issues`
-
-### 6.3. Personal Knowledge Management
-
-**Obsidian Integration:**
-```
-User: "What did I write about AI agents last month?"
-```
-
-Agent:
-1. Searches Obsidian vault for relevant notes
-2. Summarizes findings
-3. Links to specific notes
-
-**Session Memory:**
-```
-User: "What did we discuss about the server migration?"
-```
-
-Agent:
-1. Searches session logs via `memory_search`
-2. Retrieves relevant context from `MEMORY.md`
-3. Provides summary with citations
-
-**Related Skills:** `obsidian`, `session-logs`, memory system
-
-### 6.4. Smart Home Automation
-
-**Voice Control:**
-```
-User: "Announce dinner time on all speakers"
-```
-
-Agent:
-1. Uses TTS to generate announcement
-2. Plays on Sonos speakers via `sonoscli`
-
-**Scene Control:**
-```
-User: "Set movie mode"
-```
-
-Agent:
-1. Dims lights via `openhue`
-2. Pauses music on Spotify
-3. Announces via TTS
-
-**Related Skills:** `sonoscli`, `openhue`, `sag`, `spotify-player`
-
-### 6.5. Multi-Agent Routing
-
-Separate agents for different contexts:
-
-```json5
-{
-  agents: {
-    list: [
-      {
-        id: "personal",
-        workspace: "~/.openclaw/workspace-personal",
-        model: "anthropic/claude-sonnet-4-5",
-      },
-      {
-        id: "work",
-        workspace: "~/.openclaw/workspace-work",
-        model: "anthropic/claude-opus-4-5",
-      },
-    ],
-  },
-  bindings: [
-    { agentId: "personal", match: { channel: "whatsapp", accountId: "personal" } },
-    { agentId: "work", match: { channel: "telegram" } },
-  ],
-}
+你是一个高效的个人助理。每天早上检查我的日程和邮件，
+提醒重要事项。当我问问题时，先搜索网络获取最新信息。
+使用飞书记录重要信息，用飞书日历管理我的日程。
 ```
 
 ---
 
-## 7. Skill Development
+### ✍️ 内容创作者
 
-### Creating a New Skill
+适合：公众号、小红书、Twitter 运营
 
-1. **Create skill directory:**
-```bash
-mkdir -p ~/.openclaw/skills/my-skill
+**核心技能：**
+- 🖼️ AI 图片生成
+- 🧑 AI 文本人性化
+- 💚 微信公众号
+- 🐦 Twitter / X
+- 📕 小红书运营
+- 📄 PDF 生成
+
+**配置提示词：**
 ```
-
-2. **Create `SKILL.md`:**
-```markdown
----
-name: my-skill
-description: What this skill does. This is used for automatic skill activation.
----
-
-# My Skill
-
-## What it does
-Detailed description of the skill.
-
-## How to use
-Step-by-step instructions.
-
-## Tools
-List of tools this skill provides or uses.
-
-## Configuration
-Any required API keys or settings.
-```
-
-3. **Add optional files:**
-```
-my-skill/
-├── SKILL.md          # Required
-├── skill.json        # Optional: metadata
-├── scripts/          # Optional: shell scripts
-└── assets/           # Optional: images, templates
-```
-
-### Skill Metadata
-
-The frontmatter supports these fields:
-
-```yaml
----
-name: skill-name
-description: Brief description (used for activation)
-homepage: https://example.com
-user-invocable: true
-disable-model-invocation: false
-metadata:
-  openclaw:
-    emoji: "🤖"
-    requires:
-      bins: ["required-cli"]
-      env: ["API_KEY"]
-      config: ["some.config.path"]
----
-```
-
-### Gating Rules
-
-Skills are filtered at load time based on:
-
-- `requires.bins` — CLI binaries that must exist
-- `requires.env` — Environment variables required
-- `requires.config` — Config paths that must be truthy
-- `os` — Platform restriction (`darwin`, `linux`, `win32`)
-
-### Best Practices
-
-1. **Keep `SKILL.md` concise** — Focus on actionable instructions
-2. **Use clear triggers** — Description determines automatic activation
-3. **Document requirements** — API keys, configuration, dependencies
-4. **Test across providers** — Ensure compatibility with different LLMs
-5. **Security first** — Don't expose secrets in prompts or logs
-
----
-
-## 8. Multi-Agent Routing
-
-### What is Multi-Agent?
-
-Each **agent** is a fully isolated "brain" with its own:
-
-- **Workspace** — Files, AGENTS.md, SOUL.md, USER.md
-- **State directory** — Auth profiles, model registry
-- **Session storage** — Chat history + routing state
-
-### Use Cases
-
-1. **Multiple people, one server** — Each person gets their own agent
-2. **Multiple personas** — Work assistant vs personal assistant
-3. **Model routing** — Fast model for chat, powerful model for deep work
-4. **Sandbox isolation** — Restrict tools for certain agents
-
-### Example: Two WhatsApp Numbers, Two Agents
-
-```json5
-{
-  agents: {
-    list: [
-      {
-        id: "home",
-        workspace: "~/.openclaw/workspace-home",
-      },
-      {
-        id: "work",
-        workspace: "~/.openclaw/workspace-work",
-      },
-    ],
-  },
-  bindings: [
-    { agentId: "home", match: { channel: "whatsapp", accountId: "personal" } },
-    { agentId: "work", match: { channel: "whatsapp", accountId: "biz" } },
-  ],
-}
-```
-
-### Routing Priority
-
-Bindings are deterministic, most specific wins:
-
-1. `peer` match (exact DM/group/channel ID)
-2. `guildId` (Discord)
-3. `teamId` (Slack)
-4. `accountId` match
-5. Channel-level match
-6. Default agent
-
-### Adding Agents
-
-```bash
-# Interactive
-openclaw agents add work
-
-# Non-interactive
-openclaw agents add work \
-  --workspace ~/.openclaw/workspace-work \
-  --model anthropic/claude-opus-4-5 \
-  --bind whatsapp:biz \
-  --non-interactive
+你是一个专业的内容创作者。帮我：
+1. 生成吸引人的图片
+2. 把文案改写成不同平台风格（小红书活泼、公众号正式）
+3. 使用人性化工具去除 AI 味
+4. 发布前生成 PDF 预览让我确认
 ```
 
 ---
 
-## 9. Resources
+### 📈 股票分析师
 
-### Official
+适合：A股/港股/美股投资
 
-- 🌐 [OpenClaw Website](https://openclaw.ai)
-- 📚 [Documentation](https://docs.openclaw.ai)
-- 📖 [中文文档](https://docs.openclaw.ai/zh-CN/)
-- 💻 [GitHub Repository](https://github.com/openclaw/openclaw)
-- 💬 [Discord Community](https://discord.com/invite/clawd)
-- 🛒 [ClawHub](https://clawhub.com) — Discover and share skills
+**核心技能：**
+- 📈 股票监控
+- 📊 股票深度分析
+- 🇭🇰 港股 AI 投研
 
-### Documentation Hubs
-
-| Hub | Description |
-|-----|-------------|
-| [Getting Started](https://docs.openclaw.ai/start/getting-started) | From zero to first message |
-| [Configuration](https://docs.openclaw.ai/gateway/configuration) | Gateway settings, tokens, providers |
-| [Channels](https://docs.openclaw.ai/channels) | WhatsApp, Telegram, Discord, iMessage setup |
-| [Nodes](https://docs.openclaw.ai/nodes) | iOS and Android mobile nodes |
-| [Skills](https://docs.openclaw.ai/tools/skills) | Skill development and configuration |
-| [Security](https://docs.openclaw.ai/gateway/security) | Tokens, allowlists, safety controls |
-
-### Related Projects
-
-- [awesome-seedance](https://github.com/ZeroLu/awesome-seedance) — Seedance 2.0 prompts collection
-- [awesome-nanobanana-pro](https://github.com/ZeroLu/awesome-nanobanana-pro) — Nano Banana Pro prompts
-- [CyberBara](https://cyberbara.com) — Unified AI image & video generation platform
+**配置提示词：**
+```
+你是一个谨慎的股票分析师。帮我：
+1. 监控我关注的股票，重要指标变化时提醒
+2. 提供多维度分析（基本面、技术面、资金面）
+3. 给出客观分析，不提供具体买卖建议
+4. 用飞书记录每日市场观察
+```
 
 ---
 
-## 10. Contributing
+### 🌊 出海运营官
 
-Contributions are welcome! If you have:
+适合：海外市场运营
 
-- **A new skill** to share
-- **A use case** to document
-- **A tutorial** to add
-- **Improvements** to existing content
+**核心技能：**
+- 🌐 网页搜索
+- 💼 LinkedIn 运营
+- 🐦 Twitter / X
+- 🔬 深度研究
+- 🕵️ 竞品研究
 
-Please submit a Pull Request.
-
-### Guidelines
-
-1. Follow the existing format and style
-2. Include clear descriptions and examples
-3. Link to original sources when applicable
-4. Test any code examples before submitting
-
----
-
-## Star History
-
-<a href="https://star-history.com/#ZeroLu/awesome-openclaw&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=ZeroLu/awesome-openclaw&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=ZeroLu/awesome-openclaw&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=ZeroLu/awesome-openclaw&type=Date" />
- </picture>
-</a>
+**配置提示词：**
+```
+你是一个海外市场运营专家。帮我：
+1. 用英文在各平台发布内容
+2. 监控竞品动态
+3. 分析目标市场趋势
+4. 维护 LinkedIn 专业形象
+5. 运营 Twitter 账号获取海外用户
+```
 
 ---
 
-**Sponsor**: This repository is maintained by [Zero君](https://x.com/zerolu_eth). Check out [CyberBara](https://cyberbara.com) for unified AI image & video generation with Sora 2, Kling 2.6, Seedance 2.0, and Veo 3.1.
+### 🛒 电商运营
+
+适合：淘宝/京东/拼多多运营
+
+**核心技能：**
+- 🖼️ AI 图片生成
+- ✍️ SEO 内容写作
+- 📕 小红书运营
+- 🔬 深度研究
+
+**配置提示词：**
+```
+你是一个电商运营专家。帮我：
+1. 生成商品主图和详情图
+2. 写 SEO 优化的商品标题和描述
+3. 在小红书种草推广
+4. 分析竞品定价和策略
+```
+
+---
+
+## 4. Awesome Use Cases
+
+真实的使用案例，展示 OpenClaw 能做什么。
+
+> 完整用例：https://github.com/hesamsheikh/awesome-openclaw-usecases
+
+### 📰 内容消费
+
+| 用例 | 描述 |
+|------|------|
+| [Daily Reddit Digest](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/daily-reddit-digest.md) | 自动总结你关注的 subreddit |
+| [Daily YouTube Digest](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/daily-youtube-digest.md) | 每日总结你喜欢频道的视频 |
+| [Multi-Source Tech News](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/multi-source-tech-news-digest.md) | 从 109+ 来源聚合科技新闻 |
+
+### 🎬 内容创作
+
+| 用例 | 描述 |
+|------|------|
+| [YouTube Content Pipeline](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/youtube-content-pipeline.md) | 自动化视频选题、研究、追踪 |
+| [Multi-Agent Content Factory](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/content-factory.md) | 多智能体协作生产内容 |
+| [Podcast Production](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/podcast-production-pipeline.md) | 播客全流程自动化 |
+
+### 💼 效率提升
+
+| 用例 | 描述 |
+|------|------|
+| [Personal CRM](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/personal-crm.md) | 自动发现和追踪联系人 |
+| [Second Brain](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/second-brain.md) | 发消息给机器人记录，可搜索的知识库 |
+| [Custom Morning Brief](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/custom-morning-brief.md) | 定制每日早报 |
+| [Inbox De-clutter](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/inbox-declutter.md) | 自动总结订阅邮件 |
+
+### 🏠 自动化
+
+| 用例 | 描述 |
+|------|------|
+| [Self-Healing Home Server](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/self-healing-home-server.md) | 自愈家庭服务器 |
+| [n8n Workflow Orchestration](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/n8n-workflow-orchestration.md) | 通过 n8n 编排自动化流程 |
+
+---
+
+## 资源链接
+
+- 🌐 [OpenClaw 官网](https://openclaw.ai)
+- 📚 [官方文档](https://docs.openclaw.ai)
+- 💻 [GitHub](https://github.com/openclaw/openclaw)
+- 💬 [Discord 社区](https://discord.com/invite/clawd)
+- 🛒 [ClawHub 技能市场](https://clawhub.com)
+
+---
+
+**维护者：** [Zero君](https://x.com/zerolu_eth) | [CyberBara](https://cyberbara.com) - 统一 AI 图像与视频生成平台
