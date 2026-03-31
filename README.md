@@ -179,6 +179,10 @@ OpenClaw has 5400+ community skills. Here are some popular ones.
 | [n8n-automation](https://github.com/openclaw/skills/tree/main/skills/n8n-automation) | Design n8n workflow JSON |
 | [security-audit](https://github.com/openclaw/skills/tree/main/skills/security-audit) | Skill security scanning + system hardening |
 
+### 🔗 MCP Tool Gateways
+
+- [ToolRouter](https://toolrouter.com) - Give your AI agent superpowers with access to 150+ tools on demand with just one account. Competitor research, video production, web search, image generation, security scanning, and more. Works with ChatGPT, Claude, Cursor, and any MCP client. `npx -y toolrouter-mcp`
+
 ### Installing Skills
 
 ```bash
