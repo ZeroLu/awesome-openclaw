@@ -137,6 +137,12 @@ OpenClaw has 5400+ community skills. Here are some popular ones.
 | [web-search](https://github.com/openclaw/skills/tree/main/skills/web-search) | Brave Search + DuckDuckGo multi-engine search |
 | [academic-research](https://github.com/openclaw/skills/tree/main/skills/academic-research) | Search academic papers using OpenAlex API |
 
+### 📣 Social Media
+
+| Skill | Description |
+|-------|-------------|
+| [tweetclaw](https://clawhub.ai/xquik/tweetclaw) | Safety-first X/Twitter automation for OpenClaw: search, trends, account status, drafts, posting workflows, and explicit write confirmations |
+
 ### 📝 Productivity
 
 | Skill | Description |
