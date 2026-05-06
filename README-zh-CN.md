@@ -137,6 +137,12 @@ OpenClaw 拥有 5400+ 社区技能，以下是一些热门技能。
 | [web-search](https://github.com/openclaw/skills/tree/main/skills/web-search) | Brave 搜索 + DuckDuckGo 多引擎搜索 |
 | [academic-research](https://github.com/openclaw/skills/tree/main/skills/academic-research) | 使用 OpenAlex API 搜索学术论文 |
 
+### 📣 社交媒体
+
+| 技能 | 描述 |
+|------|------|
+| [tweetclaw](https://clawhub.ai/xquik/tweetclaw) | 面向 OpenClaw 的安全优先 X/Twitter 自动化：搜索、趋势、账号状态、草稿、发帖流程和明确的写入确认 |
+
 ### 📝 效率工具
 
 | 技能 | 描述 |
