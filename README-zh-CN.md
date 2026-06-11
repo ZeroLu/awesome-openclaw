@@ -120,6 +120,7 @@ OpenClaw 拥有 5400+ 社区技能，以下是一些热门技能。
 | [github](https://github.com/openclaw/skills/tree/main/skills/github) | GitHub 操作：PRs、Issues、CI、代码搜索 |
 | [gemini](https://github.com/openclaw/skills/tree/main/skills/gemini) | 使用 Gemini CLI 进行编程辅助 |
 | [claude-code](https://github.com/openclaw/skills/tree/main/skills/claude-code-skill) | MCP 集成，让 Claude Code 更强大 |
+| [Ariadne Loop / 造梦师](https://github.com/zhangzeyu99-web/ariadne-loop/tree/main/skills/ariadne-loop) | 为 OpenClaw、Codex、Claude Code 生成可验证的 Loop 规格、验证门、JSON 报告和交接包 |
 
 ### 🌐 浏览器自动化
 
