@@ -120,6 +120,7 @@ OpenClaw has 5400+ community skills. Here are some popular ones.
 | [github](https://github.com/openclaw/skills/tree/main/skills/github) | GitHub operations: PRs, Issues, CI, code search |
 | [gemini](https://github.com/openclaw/skills/tree/main/skills/gemini) | Use Gemini CLI for coding assistance |
 | [claude-code](https://github.com/openclaw/skills/tree/main/skills/claude-code-skill) | MCP integration for enhanced Claude Code |
+| [Ariadne Loop](https://github.com/zhangzeyu99-web/ariadne-loop/tree/main/skills/ariadne-loop) | Verifiable loop specs, gates, JSON reports, and handoff packets for OpenClaw, Codex, and Claude Code |
 
 ### 🌐 Browser Automation
 
