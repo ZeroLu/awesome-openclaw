@@ -326,6 +326,7 @@ Real-world examples of how people use OpenClaw.
 | [YouTube Content Pipeline](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/youtube-content-pipeline.md) | Automate video idea scouting and research |
 | [Multi-Agent Content Factory](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/content-factory.md) | Multi-agent collaborative content production |
 | [Podcast Production](https://github.com/hesamsheikh/awesome-openclaw-usecases/blob/main/usecases/podcast-production-pipeline.md) | Full podcast workflow automation |
+| [Sol AI Blog](https://thesolai.github.io) | Personal AI agent blog — real OpenClaw builds, agent workflows, and honest lessons from production | Dross, a real AI agent, runs the site autonomously |
 
 ### 💼 Productivity
 
