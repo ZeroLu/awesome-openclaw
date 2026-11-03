@@ -120,6 +120,7 @@ OpenClaw 拥有 5400+ 社区技能，以下是一些热门技能。
 | [github](https://github.com/openclaw/skills/tree/main/skills/github) | GitHub 操作：PRs、Issues、CI、代码搜索 |
 | [gemini](https://github.com/openclaw/skills/tree/main/skills/gemini) | 使用 Gemini CLI 进行编程辅助 |
 | [claude-code](https://github.com/openclaw/skills/tree/main/skills/claude-code-skill) | MCP 集成，让 Claude Code 更强大 |
+| [ponder](https://github.com/Quinnod345/ponder/tree/main/skills/ponder) | 覆盖率门控的多轮代码审查账本与四视角审议技能 (`clawhub install ponder`) |
 
 ### 🌐 浏览器自动化
 
