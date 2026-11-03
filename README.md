@@ -120,6 +120,7 @@ OpenClaw has 5400+ community skills. Here are some popular ones.
 | [github](https://github.com/openclaw/skills/tree/main/skills/github) | GitHub operations: PRs, Issues, CI, code search |
 | [gemini](https://github.com/openclaw/skills/tree/main/skills/gemini) | Use Gemini CLI for coding assistance |
 | [claude-code](https://github.com/openclaw/skills/tree/main/skills/claude-code-skill) | MCP integration for enhanced Claude Code |
+| [ponder](https://github.com/Quinnod345/ponder/tree/main/skills/ponder) | Coverage-gated, multi-pass code review ledger and 4-voice deliberation skill (`clawhub install ponder`) |
 
 ### 🌐 Browser Automation
 
